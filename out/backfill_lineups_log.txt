@@ -1,0 +1,23 @@
+lineups 1996-97 29 teams 10023 rows
+lineups 1997-98 29 teams 10757 rows
+lineups 1998-99 29 teams 7480 rows
+lineups 1999-00 29 teams 10128 rows
+lineups 2000-01 29 teams 10728 rows
+lineups 2001-02 29 teams 10314 rows
+lineups 2002-03 29 teams 9635 rows
+lineups 2003-04 29 teams 11115 rows
+lineups 2004-05 30 teams 12067 rows
+lineups 2005-06 30 teams 11690 rows
+lineups 2006-07 30 teams 11910 rows
+lineups 2007-08 30 teams 11502 rows
+lineups 2008-09 30 teams 10961 rows
+lineups 2009-10 30 teams 11007 rows
+lineups 2010-11 30 teams 11666 rows
+lineups 2011-12 30 teams 10429 rows
+lineups 2012-13 30 teams 11796 rows
+lineups 2013-14 30 teams 12039 rows
+lineups 2014-15 30 teams 13217 rows
+lineups 2015-16 30 teams 12316 rows
+lineups 2016-17 30 teams 12528 rows
+lineups 2017-18 30 teams 12835 rows
+BACKFILL DONE

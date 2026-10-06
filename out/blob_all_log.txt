@@ -1,0 +1,62 @@
+  blob: ATL
+  blob: BKN
+  blob: BOS
+  blob: CHA
+  blob: CHI
+  blob: CLE
+  blob: DAL
+  blob: DEN
+  blob: DET
+  blob: GSW
+  blob: HOU
+  blob: IND
+  blob: LAC
+  blob: LAL
+  blob: MEM
+  blob: MIA
+  blob: MIL
+  blob: MIN
+  blob: NOP
+  blob: NYK
+  blob: OKC
+  blob: ORL
+  blob: PHI
+  blob: PHX
+  blob: POR
+  blob: SAC
+  blob: SAS
+  blob: TOR
+  blob: UTA
+  blob: WAS
+[72s] team viewers done
+[79s] gallery done
+  evolution: OKC
+  evolution: GSW
+  evolution: BOS
+  evolution: MIN
+  evolution: DAL
+  evolution: CLE
+  evolution: MEM
+  evolution: NYK
+[86s] evolution done
+  morph: MIN Rudy Gobert -> LaMelo Ball
+  morph: GSW Al Horford -> Nikola Jokic
+  morph: OKC Isaiah Hartenstein -> Draymond Green
+  morph: MEM Javon Small -> Rudy Gobert
+  morph: DAL Daniel Gafford -> Myles Turner
+  roster morph: MIN 2021-22 -> 2022-23
+  roster morph: NYK 2023-24 -> 2024-25
+  roster morph: PHX 2022-23 -> 2023-24
+  roster morph: DAL 2024-25 -> 2025-26
+[91s] morphs done
+[107s] metrics done: 240 team-seasons
+
+correlation of blob shape with the graph-based structure metrics:
+               complementarity  redundancy  eff_roles  fragility    net
+volume                   0.108      -0.256      0.144     -0.043  0.024
+sphericity              -0.267       0.376      0.250     -0.155 -0.271
+components               0.095      -0.317     -0.210      0.136  0.249
+peak_density            -0.203       0.481      0.044     -0.064 -0.227
+density_ratio            0.140      -0.190     -0.106      0.075  0.111
+largest_share           -0.191       0.223      0.278     -0.158 -0.273
+BLOBS DONE

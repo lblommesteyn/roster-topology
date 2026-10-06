@@ -1,0 +1,26 @@
+  1996-2001: adj r=+0.093  raw r=+0.422  player off r=+0.420  surface r=+0.612  median shared poss=2100
+  2001-2006: adj r=+0.042  raw r=+0.338  player off r=+0.515  surface r=+0.401  median shared poss=2011
+  2006-2011: adj r=+0.040  raw r=+0.352  player off r=+0.490  surface r=+0.553  median shared poss=2092
+  2011-2016: adj r=+0.068  raw r=+0.348  player off r=+0.401  surface r=+0.662  median shared poss=1901
+  2016-2021: adj r=+0.051  raw r=+0.311  player off r=+0.390  surface r=+0.415  median shared poss=1820
+  2021-2026: adj r=+0.063  raw r=+0.354  player off r=+0.367  surface r=+0.225  median shared poss=1846
+
+=== pair-synergy reliability by era ===
+      era  rows  n_pairs  adj_r  adj_sb  raw_r  off_r  median_shared_poss  surface_r    M_r
+1996-2001 46094     2453  0.093   0.171  0.422  0.420              2100.5      0.612 -0.091
+2001-2006 51602     2843  0.042   0.080  0.338  0.515              2011.0      0.401  0.002
+2006-2011 53672     2931  0.040   0.077  0.352  0.490              2091.5      0.553  0.487
+2011-2016 56357     2945  0.068   0.127  0.348  0.401              1901.0      0.662  0.522
+2016-2021 62750     3100  0.051   0.098  0.311  0.390              1820.5      0.415  0.274
+2021-2026 69858     3267  0.063   0.118  0.354  0.367              1846.0      0.225  0.275
+
+=== adjusted-pair reliability by shared possessions (all eras pooled) ===
+  pct   0- 50  poss   805- 1944  n= 17509  r=+0.041
+  pct  50- 75  poss  1944- 3184  n=  8766  r=+0.043
+  pct  75- 90  poss  3184- 5264  n=  5259  r=+0.068
+  pct  90- 97  poss  5264- 8487  n=  2452  r=+0.092
+  pct  97-100  poss  8487-19677  n=  1052  r=+0.040
+
+  overall: n=35038, r=+0.059, Spearman-Brown +0.111
+
+  across eras: correlation between median shared possessions and pair reliability r=+0.12 (p=0.82, n=6 eras)

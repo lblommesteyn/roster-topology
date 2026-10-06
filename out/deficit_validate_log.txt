@@ -1,0 +1,8 @@
+n = 776 team-seasons with wins, 26 seasons
+  max_gap      vs same-season wins: r = +0.172
+  max_surplus  vs same-season wins: r = -0.010
+  mismatch     vs same-season wins: r = +0.272
+
+  within-season standardized:
+    max_gap      r = +0.197
+    mismatch     r = +0.275

@@ -1,0 +1,2 @@
+wrote viz/four_d_league.html
+wrote per-team 4D pages to viz/4d/

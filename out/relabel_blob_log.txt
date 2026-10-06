@@ -1,0 +1,52 @@
+  blob: ATL
+  blob: BKN
+  blob: BOS
+  blob: CHA
+  blob: CHI
+  blob: CLE
+  blob: DAL
+  blob: DEN
+  blob: DET
+  blob: GSW
+  blob: HOU
+  blob: IND
+  blob: LAC
+  blob: LAL
+  blob: MEM
+  blob: MIA
+  blob: MIL
+  blob: MIN
+  blob: NOP
+  blob: NYK
+  blob: OKC
+  blob: ORL
+  blob: PHI
+  blob: PHX
+  blob: POR
+  blob: SAC
+  blob: SAS
+  blob: TOR
+  blob: UTA
+  blob: WAS
+[9s] team viewers done
+[15s] gallery done
+  evolution: OKC
+  evolution: GSW
+  evolution: BOS
+  evolution: MIN
+  evolution: DAL
+  evolution: CLE
+  evolution: MEM
+  evolution: NYK
+[22s] evolution done
+  morph: MIN Rudy Gobert -> LaMelo Ball
+  morph: GSW Al Horford -> Nikola Jokic
+  morph: OKC Isaiah Hartenstein -> Draymond Green
+  morph: MEM Javon Small -> Rudy Gobert
+  morph: DAL Daniel Gafford -> Myles Turner
+  roster morph: MIN 2021-22 -> 2022-23
+  roster morph: NYK 2023-24 -> 2024-25
+  roster morph: PHX 2022-23 -> 2023-24
+  roster morph: DAL 2024-25 -> 2025-26
+[26s] morphs done
+BLOBS DONE

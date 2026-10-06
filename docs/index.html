@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roster Topology</title>
+<meta name="description" content="Every NBA roster drawn as a shape in learned skill space: organisms, coverage gaps, pair fit and trades.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6f3;--panel:#fff;--fg:#141414;--muted:#6b6a66;--line:#e4e2dc;--accent:#d9480f;--accent-soft:#fbe9df;--shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1012;--panel:#17191c;--fg:#ecebe8;--muted:#9a9893;--line:#2a2d31;--accent:#ff7a3d;--accent-soft:#2a1b12;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0f1012;--panel:#17191c;--fg:#ecebe8;--muted:#9a9893;--line:#2a2d31;--accent:#ff7a3d;--accent-soft:#2a1b12;--shadow:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:54px;overflow-x:auto;white-space:nowrap}
+nav b{font-weight:700;letter-spacing:-.01em;margin-right:auto}
+nav a{text-decoration:none;color:var(--muted);font-size:14px}
+nav a:hover{color:var(--fg)}
+.mono{font-family:"JetBrains Mono",monospace}
+header{padding:72px 0 40px}
+.eyebrow{font:500 12px "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.04;letter-spacing:-.035em;margin:12px 0 18px;max-width:14ch}
+.lede{font-size:18px;color:var(--muted);max-width:62ch;margin:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:40px 0 0}
+.stat{background:var(--panel);padding:18px 20px}
+.stat .n{font-size:28px;font-weight:600;letter-spacing:-.02em}
+.stat .l{font-size:13px;color:var(--muted)}
+section{padding:56px 0 8px}
+h2{font-size:28px;letter-spacing:-.025em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 24px;max-width:70ch}
+.teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px;margin-bottom:18px}
+.teams button{font:500 13px "JetBrains Mono",monospace;padding:9px 0;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:8px;cursor:pointer}
+.teams button:hover{border-color:var(--accent)}
+.teams button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.viewer{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.tabs{display:flex;gap:2px;padding:8px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{font:500 13.5px Inter,sans-serif;white-space:nowrap;padding:8px 14px;border:0;border-radius:8px;background:none;color:var(--muted);cursor:pointer}
+.tabs button:hover{color:var(--fg)}
+.tabs button[aria-selected="true"]{background:var(--accent-soft);color:var(--accent)}
+.vhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:16px 20px 0;flex-wrap:wrap}
+.vhead h3{margin:0;font-size:20px;letter-spacing:-.02em}
+.vhead a{font-size:13px;color:var(--accent);text-decoration:none}
+.vdesc{padding:4px 20px 14px;color:var(--muted);font-size:14px;margin:0;max-width:80ch}
+.stage{background:#fff;border-top:1px solid var(--line);aspect-ratio:16/10;min-height:360px}
+.stage iframe{width:100%;height:100%;border:0;display:block}
+.stage img{width:100%;height:100%;object-fit:contain;display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{display:block;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .img{aspect-ratio:16/10;background:#fff;border-bottom:1px solid var(--line)}
+.card .img img{width:100%;height:100%;object-fit:cover;display:block}
+.card .img.ph{display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:500 13px "JetBrains Mono",monospace}
+.card .t{padding:12px 14px 14px}
+.card b{display:block;font-weight:600;letter-spacing:-.01em}
+.card small{color:var(--muted);font-size:13px;line-height:1.45;display:block;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-weight:500;color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+td.num{font-family:"JetBrains Mono",monospace}
+.pos{color:#1b7f4f}.neg{color:#c0392b}
+.tbl{overflow-x:auto}
+.callout{border-left:3px solid var(--accent);padding:14px 18px;background:var(--panel);border-radius:0 12px 12px 0;color:var(--muted);max-width:80ch}
+footer{padding:64px 0 48px;color:var(--muted);font-size:13px}
+.theme{border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:8px;padding:4px 9px;cursor:pointer;font-size:13px}
+@media (max-width:640px){header{padding:44px 0 24px}.stage{aspect-ratio:auto;height:70vh}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <b>Roster Topology</b>
+  <a href="#explorer">Teams</a><a href="#league">League</a><a href="#trades">Trades</a><a href="#pairs">Pairs</a><a href="#findings">Findings</a>
+  <button class="theme" id="theme" aria-label="Toggle theme">◐</button>
+</div></nav>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">NBA · 2018-19 to 2025-26 · PCA skill space</div>
+  <h1>What shape is your roster?</h1>
+  <p class="lede">Every player-season is a point in a learned skill space. Weight each point by minutes and a roster becomes a shape: lobes where roles cluster, bulges where players duplicate each other, holes where the league spends minutes and this team does not.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">+0.48</div><div class="l">peak density vs redundancy</div></div>
+    <div class="stat"><div class="n">+0.25</div><div class="l">lobe count vs net rating</div></div>
+    <div class="stat"><div class="n">0.54</div><div class="l">shape change vs roster turnover</div></div>
+    <div class="stat"><div class="n">746</div><div class="l">team-seasons in the wins backtest</div></div>
+  </div>
+</header>
+
+<section id="explorer">
+  <h2>Team explorer</h2>
+  <p class="sub">Pick a 2025-26 roster, then switch between views of the same shape. 3D views are interactive: drag to rotate, scroll to zoom.</p>
+  <div class="teams" id="teams"></div>
+  <div class="viewer">
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="vhead"><h3 id="vtitle"></h3><a id="vopen" target="_blank" rel="noopener">Open full screen ↗</a></div>
+    <p class="vdesc" id="vdesc"></p>
+    <div class="stage" id="stage"></div>
+  </div>
+</section>
+
+<section id="league">
+  <h2>The whole league at once</h2>
+  <p class="sub">All 30 shapes side by side, and the skill space they live in.</p>
+  <div class="cards">
+    <a class="card" href="viz/blob_gallery_2025-26.html"><div class="img"><img loading="lazy" src="viz/blob_gallery_2025-26.png" alt=""></div><div class="t"><b>Organism gallery</b><small>Every roster as a 3D isosurface. Compact balls are redundant; multi-lobed bodies are diverse.</small></div></a>
+    <a class="card" href="viz/deficit_gallery_2025-26.png"><div class="img"><img loading="lazy" src="viz/deficit_gallery_2025-26.png" alt=""></div><div class="t"><b>Coverage-deficit gallery</b><small>League density minus team density. Warm is a missing role, cool is a surplus.</small></div></a>
+    <a class="card" href="viz/pairgrid_gallery_2025-26.png"><div class="img"><img loading="lazy" src="viz/pairgrid_gallery_2025-26.png" alt=""></div><div class="t"><b>Pair-fit gallery</b><small>Modelled fit for every pair on every roster.</small></div></a>
+    <a class="card" href="viz/league_gallery_2025-26.png"><div class="img"><img loading="lazy" src="viz/league_gallery_2025-26.png" alt=""></div><div class="t"><b>Roster graphs</b><small>Players as nodes, edges weighted by shared minutes and fit.</small></div></a>
+    <a class="card" href="viz/embedding_2d_2025-26.html"><div class="img ph">PC1 × PC2</div><div class="t"><b>Skill space, 2D</b><small>The first two principal components carry nearly all of the structural signal.</small></div></a>
+    <a class="card" href="viz/embedding_3d_2025-26.html"><div class="img ph">PC1 × PC2 × PC3</div><div class="t"><b>Skill space, 3D</b><small>PC3 is 8.6% of variance and mostly "disruption to efficient scoring".</small></div></a>
+    <a class="card" href="viz/embedding_umap_2025-26.html"><div class="img ph">UMAP</div><div class="t"><b>Skill space, UMAP</b><small>Nonlinear projection of the same player features.</small></div></a>
+    <a class="card" href="viz/four_d_league.html"><div class="img ph">4D · time</div><div class="t"><b>League through time</b><small>How the skill space itself has drifted across seasons.</small></div></a>
+    <a class="card" href="viz/structure_timelines.html"><div class="img ph">timelines</div><div class="t"><b>Structure timelines</b><small>Redundancy, complementarity and fragility per team over time.</small></div></a>
+    <a class="card" href="viz/wins/backtest_long.png"><div class="img"><img loading="lazy" src="viz/wins/backtest_long.png" alt=""></div><div class="t"><b>Preseason wins backtest</b><small>Leave-one-season-out over 25 seasons, projected minutes only.</small></div></a>
+    <a class="card" href="viz/wins/league_trends.png"><div class="img"><img loading="lazy" src="viz/wins/league_trends.png" alt=""></div><div class="t"><b>League trends</b><small>What has actually changed about roster construction since 1996-97.</small></div></a>
+  </div>
+</section>
+
+<section id="trades">
+  <h2>Trades and swaps</h2>
+  <p class="sub">How a shape deforms when the roster changes. Real transactions on the left half, single-player counterfactuals on the right.</p>
+  <div class="cards" id="tradecards"></div>
+</section>
+
+<section id="pairs">
+  <h2>Why a pair fits, or does not</h2>
+  <p class="sub">Best, worst and highest-minute pairs, with the skill-space geometry behind each modelled fit.</p>
+  <div class="cards" id="paircards"></div>
+</section>
+
+<section id="findings">
+  <h2>What the shape can and cannot tell you</h2>
+  <p class="sub">Each shape statistic correlated against independently computed roster structure metrics, 210 team-seasons.</p>
+  <div class="tbl"><table>
+    <tr><th>Shape encoding</th><th>Redundancy</th><th>Complementarity</th><th>Fragility</th><th>Net rating</th></tr>
+    <tr><td>Peak density</td><td class="num pos">+0.48</td><td class="num">-0.20</td><td class="num">-0.06</td><td class="num">-0.23</td></tr>
+    <tr><td>Compactness</td><td class="num pos">+0.38</td><td class="num">-0.27</td><td class="num">-0.16</td><td class="num">-0.27</td></tr>
+    <tr><td>Lobe count</td><td class="num">-0.32</td><td class="num">+0.10</td><td class="num">+0.14</td><td class="num pos">+0.25</td></tr>
+    <tr><td>Volume</td><td class="num">-0.26</td><td class="num">+0.11</td><td class="num">-0.04</td><td class="num">+0.02</td></tr>
+    <tr><td>Largest-lobe share</td><td class="num">+0.22</td><td class="num">-0.19</td><td class="num">-0.16</td><td class="num">-0.27</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:18px">Redundancy reads well as peak density. Diversity reads as lobes, and lobes are the only encoding that likes good teams: a tidy sphere is a worse team. Complementarity is a property of pairs, which a smooth density throws away. Fragility did not survive measurement.</p>
+  <div class="callout">Complementarity is real but small: about 0.45 points per 100 possessions per pair, against 3.07 for individual player value and roughly 17 points per 100 of noise in a single lineup's season. These pictures make fit look like the main story because fit is all they draw. Talent is the main story.</div>
+</section>
+
+<footer>Data from the public pbpstats API. Player features reduced with PCA; rosters rendered as minutes-weighted metaball fields with marching cubes.</footer>
+</div>
+
+<script>
+const T={ATL:"Atlanta",BKN:"Brooklyn",BOS:"Boston",CHA:"Charlotte",CHI:"Chicago",CLE:"Cleveland",DAL:"Dallas",DEN:"Denver",DET:"Detroit",GSW:"Golden State",HOU:"Houston",IND:"Indiana",LAC:"LA Clippers",LAL:"LA Lakers",MEM:"Memphis",MIA:"Miami",MIL:"Milwaukee",MIN:"Minnesota",NOP:"New Orleans",NYK:"New York",OKC:"Oklahoma City",ORL:"Orlando",PHI:"Philadelphia",PHX:"Phoenix",POR:"Portland",SAC:"Sacramento",SAS:"San Antonio",TOR:"Toronto",UTA:"Utah",WAS:"Washington"};
+const V=[
+ {k:"blob",n:"Organism",f:t=>`viz/blobs/blob_2025-26_${t}.html`,d:"The roster as a 3D isosurface in PCA space. Each player is a metaball sized by minutes; overlapping balls pile up into bulges (redundancy), separate role clusters become lobes."},
+ {k:"deficit",n:"Coverage gaps",f:t=>`viz/deficit/deficit_2025-26_${t}.png`,img:1,d:"League minutes density minus this team's, in PC1 × PC2. Warm regions are roles the roster is short of, each named after the league's highest-minute player living there."},
+ {k:"pair",n:"Pair fit",f:t=>`viz/pairgrid/pairgrid_2025-26_${t}.png`,img:1,d:"Modelled complementarity for every pair of players on the roster."},
+ {k:"graph",n:"Roster graph",f:t=>`viz/teams/team_2025-26_${t}.html`,d:"Players placed in skill space, linked by shared minutes and fit."},
+ {k:"season",n:"Season evolution",f:t=>`viz/evolution/animated_${t}.html`,d:"The shape month by month through the season, as rotations, injuries and trades change who plays."},
+ {k:"snap",n:"Snapshots",f:t=>`viz/evolution/snapshots_${t}.png`,img:1,d:"Static frames of the season's shape for quick comparison."},
+ {k:"4d",n:"Across seasons",f:t=>`viz/4d/four_d_${t}.html`,d:"The franchise's shape across eight seasons, with time as the fourth dimension."}
+];
+let team=null,view="blob";
+try{const s=JSON.parse(localStorage.getItem("rt")||"{}");team=s.team;view=s.view||view}catch(e){}
+if(!T[team])team="OKC";
+const $=id=>document.getElementById(id);
+$("teams").innerHTML=Object.keys(T).map(t=>`<button data-t="${t}" title="${T[t]}">${t}</button>`).join("");
+$("tabs").innerHTML=V.map(v=>`<button role="tab" data-v="${v.k}">${v.n}</button>`).join("");
+function render(){
+  const v=V.find(x=>x.k===view)||V[0],src=v.f(team);
+  document.querySelectorAll("#teams button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===team));
+  document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v.k));
+  $("vtitle").textContent=`${T[team]} · ${v.n}`;$("vdesc").textContent=v.d;$("vopen").href=src;
+  $("stage").innerHTML=v.img?`<img src="${src}" alt="${T[team]} ${v.n}">`:`<iframe src="${src}" title="${T[team]} ${v.n}" loading="lazy"></iframe>`;
+  try{localStorage.setItem("rt",JSON.stringify({team,view}))}catch(e){}
+}
+$("teams").onclick=e=>{const t=e.target.dataset.t;if(t){team=t;render()}};
+$("tabs").onclick=e=>{const k=e.target.dataset.v;if(k){view=k;render()}};
+render();
+
+const card=(href,img,title,desc)=>`<a class="card" href="${href}"><div class="img${img?"":" ph"}">${img?`<img loading="lazy" src="${img}" alt="">`:"3D morph"}</div><div class="t"><b>${title}</b><small>${desc}</small></div></a>`;
+const trades=[["BOS","2022-23","2023-24"],["DAL","2024-25","2025-26"],["MIN","2021-22","2022-23"],["NYK","2023-24","2024-25"],["PHX","2022-23","2023-24"]];
+const swaps=[["DAL","Gafford","Turner"],["GSW","Horford","Jokic"],["MEM","Small","Gobert"],["MIN","Gobert","Ball"],["OKC","Hartenstein","Green"]];
+$("tradecards").innerHTML=trades.map(([t,a,b])=>card(`viz/swaps/trade_${t}_${a}_to_${b}.png`,`viz/swaps/trade_${t}_${a}_to_${b}.png`,`${T[t]}, ${a} → ${b}`,t==="BOS"?"Real offseason.":`Real offseason. <span class="mono">morph:</span> <u onclick="event.preventDefault();open('viz/blobs/morph_${t}_${a}_to_${b}.html')">3D</u>`)).join("")
+ +swaps.map(([t,a,b])=>card(`viz/swaps/swap_${t}_${a}_to_${b}.png`,`viz/swaps/swap_${t}_${a}_to_${b}.png`,`${T[t]}: ${a} → ${b}`,`Counterfactual swap. <span class="mono">morph:</span> <u onclick="event.preventDefault();open('viz/blobs/morph_${t}_${a}_to_${b}.html')">3D</u>`)).join("");
+const pairs=[["best","Wembanyama_Sims"],["best","Wembanyama_Kalkbrenner"],["best","Kalkbrenner_Williams"],["best","Sims_Williams"],["highminutes","Murray_Jokić"],["worst","Kalkbrenner_Sims"],["worst","Sims_Missi"],["worst","Kalkbrenner_Missi"],["worst","Ighodaro_Kalkbrenner"]];
+const lbl={best:"Best fit",worst:"Worst fit",highminutes:"High-minutes pair"};
+$("paircards").innerHTML=pairs.map(([k,p])=>{const f=`viz/pairs/pair_${k}_${p}.png`;return card(f,f,p.replace("_"," + "),lbl[k])}).join("");
+
+const root=document.documentElement;
+try{const th=localStorage.getItem("rt-theme");if(th)root.dataset.theme=th}catch(e){}
+$("theme").onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;root.dataset.theme=dark?"light":"dark";try{localStorage.setItem("rt-theme",root.dataset.theme)}catch(e){}};
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+wrote per-team deficit maps to viz/deficit/
+wrote viz/deficit_gallery_2025-26.png
+
+ season team    net  max_gap  max_surplus  total_abs_mismatch          gap_like        surplus_players
+2025-26  BOS   8.75     0.03        -0.04                0.01     Bailey, Green       Pritchard, White
+2025-26  LAL   3.37     0.03        -0.03                0.01   Bridges, Murphy      Dončić, Hachimura
+2025-26  SAS   8.90     0.03        -0.03                0.00       Murphy, Bey     Champagnie, Barnes
+2025-26  TOR   3.97     0.03        -0.03                0.00    Murphy, Grimes          Barnes, Shead
+2025-26  WAS -10.37     0.03        -0.04                0.01   Camara, Bridges         Hardy, Johnson
+2025-26  POR   1.56     0.02        -0.03                0.00   McDaniels, Hart      Cissoko, Thybulle
+2025-26  SAC  -8.33     0.02        -0.04                0.01   Camara, Bridges       Achiuwa, Raynaud
+2025-26  DEN   6.06     0.02        -0.02                0.01       Bane, White           Jokić, Brown
+2025-26  CLE   5.89     0.02        -0.04                0.00   Bane, Edgecombe       Harden, Mitchell
+2025-26  HOU   6.30     0.02        -0.03                0.00   Bane, Edgecombe       Sengun, Thompson
+2025-26  PHI   0.93     0.02        -0.04                0.00  Hachimura, James      Grimes, Edgecombe
+2025-26  CHA   6.47     0.02        -0.03                0.00    Smith, Anunoby         Ball, Knueppel
+2025-26  MEM  -4.85     0.02        -0.03                0.01     Durant, Maxey Spencer, Caldwell-Pope
+2025-26  DAL  -3.19     0.02        -0.02                0.00    Murphy, Grimes        Flagg, Thompson
+2025-26  PHX   2.40     0.02        -0.03                0.00  Bridges, Buzelis     Ighodaro, Williams
+2025-26  NYK   7.74     0.02        -0.04                0.00   Ingram, DeRozan       Bridges, Anunoby
+2025-26  MIL  -4.62     0.02        -0.03                0.00     Bridges, Dunn          Green, Harris
+2025-26  MIN   4.24     0.02        -0.03                0.00  McCollum, Brooks        Reid, McDaniels
+2025-26  ATL   3.41     0.02        -0.03                0.00       Murphy, Bey       Landale, Okongwu
+2025-26  MIA   3.10     0.02        -0.04                0.01     Durant, Maxey         Jović, Wiggins
+2025-26  LAC   2.45     0.02        -0.02                0.00  McCollum, Brooks          Sanders, Dunn
+2025-26  OKC  13.19     0.02        -0.04                0.00     Maxey, Murray           Joe, Wallace
+2025-26  DET   9.04     0.02        -0.02                0.00   Ingram, Edwards      Duren, Cunningham
+2025-26  ORL   1.63     0.02        -0.03                0.00     Durant, Maxey            Bane, Black
+2025-26  IND  -4.35     0.01        -0.02                0.00   McCollum, Fears           Huff, Potter
+2025-26  CHI  -1.33     0.01        -0.02                0.00 O'Neale, Hardaway     Sexton, Dillingham
+2025-26  BKN  -8.73     0.01        -0.05                0.00  Robinson, Barnes           Wilson, Mann
+2025-26  NOP  -2.50     0.01        -0.03                0.00  Okongwu, Collins      Queen, Williamson
+2025-26  GSW   2.66     0.01        -0.03                0.00   Durant, Edwards          Horford, Post
+2025-26  UTA  -6.96     0.01        -0.02                0.00  Hachimura, James    Jackson, Filipowski

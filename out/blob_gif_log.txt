@@ -1,0 +1,2 @@
+  gif: C:\Users\LukeB\dev\roster-topology\src\..\viz\blobs\morph_MIN_Gobert_to_Ball.gif
+  gif: C:\Users\LukeB\dev\roster-topology\src\..\viz\blobs\morph_GSW_Horford_to_Jokic.gif
