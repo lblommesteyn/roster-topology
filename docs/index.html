@@ -73,7 +73,7 @@ footer{padding:64px 0 48px;color:var(--muted);font-size:13px}
 <body>
 <nav><div class="wrap">
   <b>Roster Topology</b>
-  <a href="#explorer">Teams</a><a href="#league">League</a><a href="#trades">Trades</a><a href="#pairs">Pairs</a><a href="#findings">Findings</a>
+  <a href="#explorer">Teams</a><a href="#league">League</a><a href="#trades">Trades</a><a href="#findings">Findings</a>
   <button class="theme" id="theme" aria-label="Toggle theme">◐</button>
 </div></nav>
 
@@ -126,11 +126,6 @@ footer{padding:64px 0 48px;color:var(--muted);font-size:13px}
   <div class="cards" id="tradecards"></div>
 </section>
 
-<section id="pairs">
-  <h2>Why a pair fits, or does not</h2>
-  <p class="sub">Best, worst and highest-minute pairs, with the skill-space geometry behind each modelled fit.</p>
-  <div class="cards" id="paircards"></div>
-</section>
 
 <section id="findings">
   <h2>What the shape can and cannot tell you</h2>
@@ -184,9 +179,6 @@ const trades=[["BOS","2022-23","2023-24"],["DAL","2024-25","2025-26"],["MIN","20
 const swaps=[["DAL","Gafford","Turner"],["GSW","Horford","Jokic"],["MEM","Small","Gobert"],["MIN","Gobert","Ball"],["OKC","Hartenstein","Green"]];
 $("tradecards").innerHTML=trades.map(([t,a,b])=>card(`viz/swaps/trade_${t}_${a}_to_${b}.png`,`viz/swaps/trade_${t}_${a}_to_${b}.png`,`${T[t]}, ${a} → ${b}`,t==="BOS"?"Real offseason.":`Real offseason. <span class="mono">morph:</span> <u onclick="event.preventDefault();open('viz/blobs/morph_${t}_${a}_to_${b}.html')">3D</u>`)).join("")
  +swaps.map(([t,a,b])=>card(`viz/swaps/swap_${t}_${a}_to_${b}.png`,`viz/swaps/swap_${t}_${a}_to_${b}.png`,`${T[t]}: ${a} → ${b}`,`Counterfactual swap. <span class="mono">morph:</span> <u onclick="event.preventDefault();open('viz/blobs/morph_${t}_${a}_to_${b}.html')">3D</u>`)).join("");
-const pairs=[["best","Wembanyama_Sims"],["best","Wembanyama_Kalkbrenner"],["best","Kalkbrenner_Williams"],["best","Sims_Williams"],["highminutes","Murray_Jokić"],["worst","Kalkbrenner_Sims"],["worst","Sims_Missi"],["worst","Kalkbrenner_Missi"],["worst","Ighodaro_Kalkbrenner"]];
-const lbl={best:"Best fit",worst:"Worst fit",highminutes:"High-minutes pair"};
-$("paircards").innerHTML=pairs.map(([k,p])=>{const f=`viz/pairs/pair_${k}_${p}.png`;return card(f,f,p.replace("_"," + "),lbl[k])}).join("");
 
 const root=document.documentElement;
 try{const th=localStorage.getItem("rt-theme");if(th)root.dataset.theme=th}catch(e){}
