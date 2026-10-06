@@ -1,0 +1,85 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roster organisms</title><style>
+:root { --bg:#0a0c10; --fg:#e8e8e6; --muted:#8b949e; --line:#1e242c; --pos:#2ecc8f; --neg:#c0392b; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+.wrap { max-width:1180px; margin:0 auto; padding:44px 18px 90px; }
+h1 { font-size:34px; margin:0 0 4px; letter-spacing:-0.02em; font-weight:650; }
+h2 { font-size:19px; margin:46px 0 8px; padding-bottom:7px; border-bottom:1px solid var(--line);
+  font-weight:600; }
+p.lede { color:var(--muted); margin:0 0 6px; max-width:74ch; }
+.note { color:var(--muted); font-size:13.5px; margin:6px 0 16px; max-width:82ch; }
+.hero { display:block; width:100%; border-radius:10px; border:1px solid var(--line); margin:10px 0 4px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:8px; }
+a.card { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:9px;
+  text-decoration:none; color:var(--fg); background:#0e1218; }
+a.card:hover { border-color:var(--pos); background:#111820; }
+a.card small { display:block; color:var(--muted); font-size:12px; margin-top:2px; }
+.chips a { display:inline-block; margin:0 6px 6px 0; padding:5px 11px; border:1px solid var(--line);
+  border-radius:20px; font-size:13px; text-decoration:none; color:var(--fg); background:#0e1218; }
+.chips a:hover { border-color:var(--pos); }
+table { border-collapse:collapse; width:100%; font-size:13.5px; }
+th,td { text-align:left; padding:6px 9px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:600; }
+code { background:#151b23; padding:1px 6px; border-radius:4px; font-size:12.5px; }
+.key { display:flex; gap:22px; flex-wrap:wrap; color:var(--muted); font-size:13px; margin:8px 0 0; }
+.key b { color:var(--fg); font-weight:600; }
+</style></head><body><div class="wrap">
+<h1>Roster organisms</h1>
+<p class="lede">Every NBA roster as a 3D body in learned skill space. Each player is a metaball
+whose radius grows with his minutes; the team is the surface where their combined occupancy field
+crosses a threshold. Shape is roster construction: lobes are role concentrations, necks are
+connectors, a fat dense centre is redundancy, and a detached satellite is a player nobody overlaps
+with.</p>
+<img class="hero" src="blob_gallery_2025-26.png" alt="thirty roster organisms">
+<div class="key">
+  <span><b>position</b> where the roster sits in skill space</span>
+  <span><b>volume</b> how much of the space it covers</span>
+  <span><b>lobes</b> distinct role clusters</span>
+  <span><b>colour</b> defence-leaning (blue) to offence-leaning (orange)</span>
+  <span><b>axes</b> spacing-to-rim/glass, off-ball-to-on-ball, disruption-to-efficient-scoring</span>
+  <span><b>inner glow</b> where the minutes concentrate</span>
+</div>
+
+<h2>Start here</h2>
+<div class="grid"><a class="card" href="blob_gallery_2025-26.html">League gallery<small>all 30 organisms, 2025-26</small></a><a class="card" href="blobs/morph_MIN_Gobert_to_Ball.html">Trade morph<small>MIN: Gobert becomes LaMelo Ball</small></a><a class="card" href="blobs/evolution_OKC.html">Season evolution<small>OKC across 8 seasons</small></a><a class="card" href="blobs/season_OKC_2025-26.html">Within a season<small>OKC month by month, 2025-26</small></a></div>
+
+<h2>Single-team viewers, 2025-26</h2>
+<p class="note">Rotate, zoom, hover a nucleus for the player. The faint grey envelope is the whole
+league that season, so you can see how much of the space a roster actually occupies.</p>
+<div class="chips"><a href="blobs/blob_2025-26_ATL.html">ATL</a><a href="blobs/blob_2025-26_BKN.html">BKN</a><a href="blobs/blob_2025-26_BOS.html">BOS</a><a href="blobs/blob_2025-26_CHA.html">CHA</a><a href="blobs/blob_2025-26_CHI.html">CHI</a><a href="blobs/blob_2025-26_CLE.html">CLE</a><a href="blobs/blob_2025-26_DAL.html">DAL</a><a href="blobs/blob_2025-26_DEN.html">DEN</a><a href="blobs/blob_2025-26_DET.html">DET</a><a href="blobs/blob_2025-26_GSW.html">GSW</a><a href="blobs/blob_2025-26_HOU.html">HOU</a><a href="blobs/blob_2025-26_IND.html">IND</a><a href="blobs/blob_2025-26_LAC.html">LAC</a><a href="blobs/blob_2025-26_LAL.html">LAL</a><a href="blobs/blob_2025-26_MEM.html">MEM</a><a href="blobs/blob_2025-26_MIA.html">MIA</a><a href="blobs/blob_2025-26_MIL.html">MIL</a><a href="blobs/blob_2025-26_MIN.html">MIN</a><a href="blobs/blob_2025-26_NOP.html">NOP</a><a href="blobs/blob_2025-26_NYK.html">NYK</a><a href="blobs/blob_2025-26_OKC.html">OKC</a><a href="blobs/blob_2025-26_ORL.html">ORL</a><a href="blobs/blob_2025-26_PHI.html">PHI</a><a href="blobs/blob_2025-26_PHX.html">PHX</a><a href="blobs/blob_2025-26_POR.html">POR</a><a href="blobs/blob_2025-26_SAC.html">SAC</a><a href="blobs/blob_2025-26_SAS.html">SAS</a><a href="blobs/blob_2025-26_TOR.html">TOR</a><a href="blobs/blob_2025-26_UTA.html">UTA</a><a href="blobs/blob_2025-26_WAS.html">WAS</a></div>
+
+<h2>Season evolution</h2>
+<p class="note">One frame per season, 2018-19 to 2025-26. The organism grows, splits and re-forms
+as the roster turns over. Play it and watch Oklahoma City go from a single dense ball of
+interchangeable guards to a wide three-lobed body.</p>
+<div class="chips"><a href="blobs/evolution_BOS.html">BOS</a><a href="blobs/evolution_CLE.html">CLE</a><a href="blobs/evolution_DAL.html">DAL</a><a href="blobs/evolution_GSW.html">GSW</a><a href="blobs/evolution_MEM.html">MEM</a><a href="blobs/evolution_MIN.html">MIN</a><a href="blobs/evolution_NYK.html">NYK</a><a href="blobs/evolution_OKC.html">OKC</a></div>
+
+<h2>Within a season, month by month</h2>
+<p class="note">Built from monthly player totals. Minutes and rotation membership are exact;
+each player's position is shrunk toward his season position, because raw monthly form is noisy
+enough to make a blob shimmer for no reason. Annotations name who entered and left the rotation.</p>
+<div class="chips"><a href="blobs/season_DAL_2025-26.html">DAL</a><a href="blobs/season_GSW_2025-26.html">GSW</a><a href="blobs/season_MEM_2025-26.html">MEM</a><a href="blobs/season_MIN_2025-26.html">MIN</a><a href="blobs/season_NYK_2025-26.html">NYK</a><a href="blobs/season_OKC_2025-26.html">OKC</a></div>
+
+<h2>Trade morphs</h2>
+<p class="note">Not two pictures side by side: the occupancy field itself is interpolated and the
+surface is re-extracted at every step, so the outgoing player's lobe deflates while the incoming
+player's inflates, and the topology can change mid-morph. Green is volume gained, red is volume
+vacated.</p>
+<div class="chips"><a href="blobs/morph_DAL_2024-25_to_2025-26.html">DAL 2024-25 to 2025-26</a><a href="blobs/morph_DAL_Gafford_to_Turner.html">DAL Gafford to Turner</a><a href="blobs/morph_GSW_Horford_to_Jokic.html">GSW Horford to Jokic</a><a href="blobs/morph_MEM_Small_to_Gobert.html">MEM Small to Gobert</a><a href="blobs/morph_MIN_2021-22_to_2022-23.html">MIN 2021-22 to 2022-23</a><a href="blobs/morph_MIN_Gobert_to_Ball.html">MIN Gobert to Ball</a><a href="blobs/morph_NYK_2023-24_to_2024-25.html">NYK 2023-24 to 2024-25</a><a href="blobs/morph_OKC_Hartenstein_to_Green.html">OKC Hartenstein to Green</a><a href="blobs/morph_PHX_2022-23_to_2023-24.html">PHX 2022-23 to 2023-24</a></div>
+<p class='note'>Quick-look animations, no browser interaction needed:</p><div class="chips"><a href="blobs/morph_GSW_Horford_to_Jokic.gif">morph GSW Horford to Jokic</a><a href="blobs/morph_MIN_Gobert_to_Ball.gif">morph MIN Gobert to Ball</a></div>
+
+<h2>Rotations</h2>
+<p class="note">A full orbit around one organism. The surface is drawn opaque here: a non-convex
+semi-transparent mesh self-sorts badly and bands when it turns edge-on, and the orbit conveys the
+form better than see-through does anyway.</p>
+<div class="chips"><a href="blobs/rotate_LAL_2025-26.gif">LAL 2025-26</a></div>
+
+<h2>Shape numbers, 2025-26</h2>
+<p class="note">Peak density tracks the graph-based redundancy measure at r = 0.48, and lobe count
+correlates with net rating at +0.25: more separated role clusters, better team. Full reasoning in
+<code>BLOB_VIS_FINDINGS.md</code>.</p>
+<table><tr><th>team</th><th>net</th><th>volume</th><th>compactness</th><th>lobes</th><th>peak density</th><th>connector</th></tr><tr><td><b>WAS</b></td><td>-10.4</td><td>122</td><td>0.87</td><td>1</td><td>4.75</td><td>Julian Reese</td></tr><tr><td><b>NYK</b></td><td>+7.7</td><td>103</td><td>0.94</td><td>2</td><td>4.73</td><td>Karl-Anthony Towns</td></tr><tr><td><b>BKN</b></td><td>-8.7</td><td>110</td><td>0.89</td><td>2</td><td>4.69</td><td>Nic Claxton</td></tr><tr><td><b>PHI</b></td><td>+0.9</td><td>136</td><td>0.82</td><td>1</td><td>4.49</td><td>Quentin Grimes</td></tr><tr><td><b>ORL</b></td><td>+1.6</td><td>178</td><td>0.88</td><td>1</td><td>4.29</td><td>Wendell Carter Jr.</td></tr><tr><td><b>MIN</b></td><td>+4.2</td><td>141</td><td>0.85</td><td>2</td><td>4.22</td><td>Rudy Gobert</td></tr><tr><td><b>GSW</b></td><td>+2.7</td><td>139</td><td>0.94</td><td>1</td><td>4.18</td><td>Stephen Curry</td></tr><tr><td><b>MIA</b></td><td>+3.1</td><td>181</td><td>0.95</td><td>1</td><td>3.99</td><td>Bam Adebayo</td></tr><tr><td><b>SAC</b></td><td>-8.3</td><td>201</td><td>0.78</td><td>2</td><td>3.81</td><td>Nique Clifford</td></tr><tr><td><b>MEM</b></td><td>-4.9</td><td>221</td><td>0.94</td><td>1</td><td>3.64</td><td>Cedric Coward</td></tr><tr><td><b>UTA</b></td><td>-7.0</td><td>247</td><td>0.86</td><td>2</td><td>3.49</td><td>Isaiah Collier</td></tr><tr><td><b>CHA</b></td><td>+6.5</td><td>151</td><td>0.77</td><td>3</td><td>3.37</td><td>Ryan Kalkbrenner</td></tr><tr><td><b>DAL</b></td><td>-3.2</td><td>252</td><td>0.85</td><td>1</td><td>3.20</td><td>Max Christie</td></tr><tr><td><b>LAC</b></td><td>+2.5</td><td>214</td><td>0.83</td><td>1</td><td>3.17</td><td>Kris Dunn</td></tr><tr><td><b>ATL</b></td><td>+3.4</td><td>303</td><td>0.86</td><td>1</td><td>3.17</td><td>CJ McCollum</td></tr><tr><td><b>OKC</b></td><td>+13.2</td><td>203</td><td>0.75</td><td>3</td><td>3.10</td><td>Shai Gilgeous-Alexander</td></tr><tr><td><b>IND</b></td><td>-4.4</td><td>303</td><td>0.79</td><td>2</td><td>3.03</td><td>Ivica Zubac</td></tr><tr><td><b>BOS</b></td><td>+8.7</td><td>125</td><td>0.64</td><td>4</td><td>3.01</td><td>Neemias Queta</td></tr><tr><td><b>MIL</b></td><td>-4.6</td><td>295</td><td>0.79</td><td>2</td><td>2.92</td><td>Jericho Sims</td></tr><tr><td><b>PHX</b></td><td>+2.4</td><td>275</td><td>0.73</td><td>2</td><td>2.87</td><td>Royce O'Neale</td></tr><tr><td><b>POR</b></td><td>+1.6</td><td>242</td><td>0.71</td><td>2</td><td>2.84</td><td>Donovan Clingan</td></tr><tr><td><b>DET</b></td><td>+9.0</td><td>223</td><td>0.70</td><td>4</td><td>2.75</td><td>Duncan Robinson</td></tr><tr><td><b>NOP</b></td><td>-2.5</td><td>248</td><td>0.78</td><td>1</td><td>2.72</td><td>Derik Queen</td></tr><tr><td><b>CLE</b></td><td>+5.9</td><td>278</td><td>0.67</td><td>2</td><td>2.71</td><td>Jarrett Allen</td></tr><tr><td><b>LAL</b></td><td>+3.4</td><td>222</td><td>0.68</td><td>3</td><td>2.71</td><td>Luke Kennard</td></tr><tr><td><b>TOR</b></td><td>+4.0</td><td>233</td><td>0.76</td><td>1</td><td>2.68</td><td>Jamal Shead</td></tr><tr><td><b>CHI</b></td><td>-1.3</td><td>298</td><td>0.85</td><td>1</td><td>2.65</td><td>Jalen Smith</td></tr><tr><td><b>DEN</b></td><td>+6.1</td><td>260</td><td>0.73</td><td>3</td><td>2.62</td><td>Nikola Jokić</td></tr><tr><td><b>SAS</b></td><td>+8.9</td><td>209</td><td>0.74</td><td>3</td><td>2.53</td><td>Victor Wembanyama</td></tr><tr><td><b>HOU</b></td><td>+6.3</td><td>377</td><td>0.73</td><td>1</td><td>2.02</td><td>Reed Sheppard</td></tr></table>
+</div></body></html>

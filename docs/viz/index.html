@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NBA Roster Topology</title><style>
+:root { --bg:#fbfbfa; --fg:#1a1a1a; --muted:#666; --line:#e3e3e0; --pos:#1b7f4f; --neg:#c0392b; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#16181a; --fg:#ececeb; --muted:#a2a2a0; --line:#2c2f33; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.6 -apple-system,BlinkMacSystemFont,
+  "Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+.wrap { max-width:1100px; margin:0 auto; padding:40px 16px 80px; }
+h1 { font-size:30px; margin:0 0 6px; letter-spacing:-0.01em; }
+h2 { font-size:20px; margin:44px 0 6px; padding-bottom:6px; border-bottom:1px solid var(--line); }
+p.lede { color:var(--muted); margin:0 0 8px; }
+.note { color:var(--muted); font-size:13.5px; margin:4px 0 14px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:8px; }
+a.card { display:block; padding:9px 11px; border:1px solid var(--line); border-radius:8px;
+  text-decoration:none; color:var(--fg); background:transparent; }
+a.card:hover { border-color:var(--pos); }
+a.card small { display:block; color:var(--muted); font-size:12px; }
+.chips a { display:inline-block; margin:0 5px 5px 0; padding:4px 9px; border:1px solid var(--line);
+  border-radius:20px; font-size:13px; text-decoration:none; color:var(--fg); }
+.chips a:hover { border-color:var(--pos); }
+table { border-collapse:collapse; width:100%; font-size:14px; }
+th,td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); }
+th { color:var(--muted); font-weight:600; }
+code { background:rgba(127,127,127,.13); padding:1px 5px; border-radius:4px; font-size:13px; }
+.pos { color:var(--pos); } .neg { color:var(--neg); }
+</style></head><body><div class="wrap">
+<h1>NBA roster topology</h1>
+<p class="lede">Player skill embeddings, pair complementarity and roster shape, 2018-19 to 2025-26.
+Every view is generated from the pipeline in <code>src/</code>; the statistical caveats are in
+<code>FINDINGS.md</code> and the reading guide for these views is in
+<code>VISUALIZATION_FINDINGS.md</code>.</p>
+
+<h2>Start here</h2>
+<div class="grid"><a class="card" href="blobs.html">Roster organisms<small>3D blobs: the metaphor view</small></a><a class="card" href="wins/backtest.png">Win projection backtest<small>does any of this predict wins?</small></a><a class="card" href="deficit_gallery_2025-26.png">What rosters are missing<small>coverage-deficit maps</small></a><a class="card" href="pairgrid_gallery_2025-26.png">Pair fit matrices<small>who fits with whom, per team</small></a><a class="card" href="wins/league_trends.png">League trends<small>what changed, 2018-19 to 2025-26</small></a><a class="card" href="league_gallery_2025-26.png">League gallery<small>all 30 rosters, 2025-26</small></a><a class="card" href="four_d_league.html">4D league view<small>team shapes moving through 8 seasons</small></a><a class="card" href="embedding_2d_2025-26.html">Skill map (2D)<small>every rotation player, team highlight</small></a><a class="card" href="embedding_3d_2025-26.html">Skill map (3D)<small>rotatable PC1/PC2/PC3</small></a><a class="card" href="embedding_umap_2025-26.html">UMAP map<small>non-linear view of the same space</small></a><a class="card" href="structure_timelines.html">Structure timelines<small>metrics per team over 8 seasons</small></a></div>
+
+<h2>How to read a roster graph</h2>
+<p class="note">
+Each node is a player: <b>size</b> = minutes, <b>colour</b> = a skill dimension (PC1 runs
+perimeter spacing to rim-and-offensive-glass). Each edge is the model's estimate of how well
+two players fit:
+<span class="pos">green = complementary</span>, <span class="neg">red = redundant or clashing</span>,
+thickness = strength. In the static and interactive team views, <b>distance is fit</b>: the layout
+is MDS on synergy-derived distances, so players who fit sit close together. In the 3D and 4D views
+the axes are skill dimensions instead, which stay comparable across seasons.
+</p>
+<p class="note">
+A <b>healthy</b> roster looks like a loose ring of well-separated nodes with green edges crossing
+the middle. <b>Redundancy</b> looks like a tight red knot. A <b>bridge player</b> sits between two
+otherwise unconnected groups with green edges to both, and is named in the connector column below.
+</p>
+
+<h2>Teams, 2025-26</h2>
+<table><tr><th>team</th><th>complementarity</th><th>net</th><th>connector</th><th>views</th></tr>
+<tr><td><b>CHA</b></td><td class='pos'>+0.100</td><td>+6.5</td><td>Ryan Kalkbrenner</td><td><a href="teams/team_2025-26_CHA.html">interactive</a> · <a href="teams/topology_2025-26_CHA.png">static</a> · <a href="4d/four_d_CHA.html">4D</a> · <a href="evolution/animated_CHA.html">animated</a> · <a href="evolution/snapshots_CHA.png">by season</a></td></tr><tr><td><b>LAL</b></td><td class='pos'>+0.097</td><td>+3.4</td><td>Luke Kennard</td><td><a href="teams/team_2025-26_LAL.html">interactive</a> · <a href="teams/topology_2025-26_LAL.png">static</a> · <a href="4d/four_d_LAL.html">4D</a> · <a href="evolution/animated_LAL.html">animated</a> · <a href="evolution/snapshots_LAL.png">by season</a></td></tr><tr><td><b>CLE</b></td><td class='pos'>+0.092</td><td>+5.9</td><td>Jarrett Allen</td><td><a href="teams/team_2025-26_CLE.html">interactive</a> · <a href="teams/topology_2025-26_CLE.png">static</a> · <a href="4d/four_d_CLE.html">4D</a> · <a href="evolution/animated_CLE.html">animated</a> · <a href="evolution/snapshots_CLE.png">by season</a> · <a href="evolution/evolution_CLE.gif">gif</a></td></tr><tr><td><b>MIN</b></td><td class='pos'>+0.091</td><td>+4.2</td><td>Rudy Gobert</td><td><a href="teams/team_2025-26_MIN.html">interactive</a> · <a href="teams/topology_2025-26_MIN.png">static</a> · <a href="4d/four_d_MIN.html">4D</a> · <a href="evolution/animated_MIN.html">animated</a> · <a href="evolution/snapshots_MIN.png">by season</a> · <a href="evolution/evolution_MIN.gif">gif</a></td></tr><tr><td><b>BOS</b></td><td class='pos'>+0.084</td><td>+8.7</td><td>Neemias Queta</td><td><a href="teams/team_2025-26_BOS.html">interactive</a> · <a href="teams/topology_2025-26_BOS.png">static</a> · <a href="4d/four_d_BOS.html">4D</a> · <a href="evolution/animated_BOS.html">animated</a> · <a href="evolution/snapshots_BOS.png">by season</a> · <a href="evolution/evolution_BOS.gif">gif</a></td></tr><tr><td><b>OKC</b></td><td class='pos'>+0.077</td><td>+13.2</td><td>Shai Gilgeous-Alexander</td><td><a href="teams/team_2025-26_OKC.html">interactive</a> · <a href="teams/topology_2025-26_OKC.png">static</a> · <a href="4d/four_d_OKC.html">4D</a> · <a href="evolution/animated_OKC.html">animated</a> · <a href="evolution/snapshots_OKC.png">by season</a> · <a href="evolution/evolution_OKC.gif">gif</a></td></tr><tr><td><b>SAS</b></td><td class='pos'>+0.066</td><td>+8.9</td><td>Victor Wembanyama</td><td><a href="teams/team_2025-26_SAS.html">interactive</a> · <a href="teams/topology_2025-26_SAS.png">static</a> · <a href="4d/four_d_SAS.html">4D</a> · <a href="evolution/animated_SAS.html">animated</a> · <a href="evolution/snapshots_SAS.png">by season</a></td></tr><tr><td><b>DEN</b></td><td class='pos'>+0.064</td><td>+6.1</td><td>Nikola Jokić</td><td><a href="teams/team_2025-26_DEN.html">interactive</a> · <a href="teams/topology_2025-26_DEN.png">static</a> · <a href="4d/four_d_DEN.html">4D</a> · <a href="evolution/animated_DEN.html">animated</a> · <a href="evolution/snapshots_DEN.png">by season</a></td></tr><tr><td><b>NYK</b></td><td class='pos'>+0.064</td><td>+7.7</td><td>Karl-Anthony Towns</td><td><a href="teams/team_2025-26_NYK.html">interactive</a> · <a href="teams/topology_2025-26_NYK.png">static</a> · <a href="4d/four_d_NYK.html">4D</a> · <a href="evolution/animated_NYK.html">animated</a> · <a href="evolution/snapshots_NYK.png">by season</a></td></tr><tr><td><b>WAS</b></td><td class='pos'>+0.061</td><td>-10.4</td><td>Julian Reese</td><td><a href="teams/team_2025-26_WAS.html">interactive</a> · <a href="teams/topology_2025-26_WAS.png">static</a> · <a href="4d/four_d_WAS.html">4D</a> · <a href="evolution/animated_WAS.html">animated</a> · <a href="evolution/snapshots_WAS.png">by season</a></td></tr><tr><td><b>POR</b></td><td class='pos'>+0.051</td><td>+1.6</td><td>Donovan Clingan</td><td><a href="teams/team_2025-26_POR.html">interactive</a> · <a href="teams/topology_2025-26_POR.png">static</a> · <a href="4d/four_d_POR.html">4D</a> · <a href="evolution/animated_POR.html">animated</a> · <a href="evolution/snapshots_POR.png">by season</a></td></tr><tr><td><b>MIL</b></td><td class='pos'>+0.048</td><td>-4.6</td><td>Jericho Sims</td><td><a href="teams/team_2025-26_MIL.html">interactive</a> · <a href="teams/topology_2025-26_MIL.png">static</a> · <a href="4d/four_d_MIL.html">4D</a> · <a href="evolution/animated_MIL.html">animated</a> · <a href="evolution/snapshots_MIL.png">by season</a></td></tr><tr><td><b>PHX</b></td><td class='pos'>+0.048</td><td>+2.4</td><td>Royce O'Neale</td><td><a href="teams/team_2025-26_PHX.html">interactive</a> · <a href="teams/topology_2025-26_PHX.png">static</a> · <a href="4d/four_d_PHX.html">4D</a> · <a href="evolution/animated_PHX.html">animated</a> · <a href="evolution/snapshots_PHX.png">by season</a></td></tr><tr><td><b>MIA</b></td><td class='pos'>+0.046</td><td>+3.1</td><td>Bam Adebayo</td><td><a href="teams/team_2025-26_MIA.html">interactive</a> · <a href="teams/topology_2025-26_MIA.png">static</a> · <a href="4d/four_d_MIA.html">4D</a> · <a href="evolution/animated_MIA.html">animated</a> · <a href="evolution/snapshots_MIA.png">by season</a></td></tr><tr><td><b>LAC</b></td><td class='pos'>+0.044</td><td>+2.5</td><td>Kris Dunn</td><td><a href="teams/team_2025-26_LAC.html">interactive</a> · <a href="teams/topology_2025-26_LAC.png">static</a> · <a href="4d/four_d_LAC.html">4D</a> · <a href="evolution/animated_LAC.html">animated</a> · <a href="evolution/snapshots_LAC.png">by season</a></td></tr><tr><td><b>BKN</b></td><td class='pos'>+0.043</td><td>-8.7</td><td>Nic Claxton</td><td><a href="teams/team_2025-26_BKN.html">interactive</a> · <a href="teams/topology_2025-26_BKN.png">static</a> · <a href="4d/four_d_BKN.html">4D</a> · <a href="evolution/animated_BKN.html">animated</a> · <a href="evolution/snapshots_BKN.png">by season</a></td></tr><tr><td><b>TOR</b></td><td class='pos'>+0.041</td><td>+4.0</td><td>Jamal Shead</td><td><a href="teams/team_2025-26_TOR.html">interactive</a> · <a href="teams/topology_2025-26_TOR.png">static</a> · <a href="4d/four_d_TOR.html">4D</a> · <a href="evolution/animated_TOR.html">animated</a> · <a href="evolution/snapshots_TOR.png">by season</a></td></tr><tr><td><b>IND</b></td><td class='pos'>+0.035</td><td>-4.4</td><td>Ivica Zubac</td><td><a href="teams/team_2025-26_IND.html">interactive</a> · <a href="teams/topology_2025-26_IND.png">static</a> · <a href="4d/four_d_IND.html">4D</a> · <a href="evolution/animated_IND.html">animated</a> · <a href="evolution/snapshots_IND.png">by season</a></td></tr><tr><td><b>SAC</b></td><td class='pos'>+0.034</td><td>-8.3</td><td>Nique Clifford</td><td><a href="teams/team_2025-26_SAC.html">interactive</a> · <a href="teams/topology_2025-26_SAC.png">static</a> · <a href="4d/four_d_SAC.html">4D</a> · <a href="evolution/animated_SAC.html">animated</a> · <a href="evolution/snapshots_SAC.png">by season</a></td></tr><tr><td><b>ATL</b></td><td class='pos'>+0.033</td><td>+3.4</td><td>CJ McCollum</td><td><a href="teams/team_2025-26_ATL.html">interactive</a> · <a href="teams/topology_2025-26_ATL.png">static</a> · <a href="4d/four_d_ATL.html">4D</a> · <a href="evolution/animated_ATL.html">animated</a> · <a href="evolution/snapshots_ATL.png">by season</a></td></tr><tr><td><b>CHI</b></td><td class='pos'>+0.033</td><td>-1.3</td><td>Jalen Smith</td><td><a href="teams/team_2025-26_CHI.html">interactive</a> · <a href="teams/topology_2025-26_CHI.png">static</a> · <a href="4d/four_d_CHI.html">4D</a> · <a href="evolution/animated_CHI.html">animated</a> · <a href="evolution/snapshots_CHI.png">by season</a></td></tr><tr><td><b>NOP</b></td><td class='pos'>+0.030</td><td>-2.5</td><td>Derik Queen</td><td><a href="teams/team_2025-26_NOP.html">interactive</a> · <a href="teams/topology_2025-26_NOP.png">static</a> · <a href="4d/four_d_NOP.html">4D</a> · <a href="evolution/animated_NOP.html">animated</a> · <a href="evolution/snapshots_NOP.png">by season</a></td></tr><tr><td><b>PHI</b></td><td class='pos'>+0.030</td><td>+0.9</td><td>Quentin Grimes</td><td><a href="teams/team_2025-26_PHI.html">interactive</a> · <a href="teams/topology_2025-26_PHI.png">static</a> · <a href="4d/four_d_PHI.html">4D</a> · <a href="evolution/animated_PHI.html">animated</a> · <a href="evolution/snapshots_PHI.png">by season</a></td></tr><tr><td><b>DET</b></td><td class='pos'>+0.025</td><td>+9.0</td><td>Duncan Robinson</td><td><a href="teams/team_2025-26_DET.html">interactive</a> · <a href="teams/topology_2025-26_DET.png">static</a> · <a href="4d/four_d_DET.html">4D</a> · <a href="evolution/animated_DET.html">animated</a> · <a href="evolution/snapshots_DET.png">by season</a></td></tr><tr><td><b>ORL</b></td><td class='pos'>+0.023</td><td>+1.6</td><td>Wendell Carter Jr.</td><td><a href="teams/team_2025-26_ORL.html">interactive</a> · <a href="teams/topology_2025-26_ORL.png">static</a> · <a href="4d/four_d_ORL.html">4D</a> · <a href="evolution/animated_ORL.html">animated</a> · <a href="evolution/snapshots_ORL.png">by season</a></td></tr><tr><td><b>UTA</b></td><td class='pos'>+0.021</td><td>-7.0</td><td>Isaiah Collier</td><td><a href="teams/team_2025-26_UTA.html">interactive</a> · <a href="teams/topology_2025-26_UTA.png">static</a> · <a href="4d/four_d_UTA.html">4D</a> · <a href="evolution/animated_UTA.html">animated</a> · <a href="evolution/snapshots_UTA.png">by season</a></td></tr><tr><td><b>DAL</b></td><td class='pos'>+0.004</td><td>-3.2</td><td>Max Christie</td><td><a href="teams/team_2025-26_DAL.html">interactive</a> · <a href="teams/topology_2025-26_DAL.png">static</a> · <a href="4d/four_d_DAL.html">4D</a> · <a href="evolution/animated_DAL.html">animated</a> · <a href="evolution/snapshots_DAL.png">by season</a> · <a href="evolution/evolution_DAL.gif">gif</a></td></tr><tr><td><b>HOU</b></td><td class='pos'>+0.001</td><td>+6.3</td><td>Reed Sheppard</td><td><a href="teams/team_2025-26_HOU.html">interactive</a> · <a href="teams/topology_2025-26_HOU.png">static</a> · <a href="4d/four_d_HOU.html">4D</a> · <a href="evolution/animated_HOU.html">animated</a> · <a href="evolution/snapshots_HOU.png">by season</a></td></tr><tr><td><b>MEM</b></td><td class='neg'>-0.035</td><td>-4.9</td><td>Cedric Coward</td><td><a href="teams/team_2025-26_MEM.html">interactive</a> · <a href="teams/topology_2025-26_MEM.png">static</a> · <a href="4d/four_d_MEM.html">4D</a> · <a href="evolution/animated_MEM.html">animated</a> · <a href="evolution/snapshots_MEM.png">by season</a></td></tr><tr><td><b>GSW</b></td><td class='neg'>-0.050</td><td>+2.7</td><td>Stephen Curry</td><td><a href="teams/team_2025-26_GSW.html">interactive</a> · <a href="teams/topology_2025-26_GSW.png">static</a> · <a href="4d/four_d_GSW.html">4D</a> · <a href="evolution/animated_GSW.html">animated</a> · <a href="evolution/snapshots_GSW.png">by season</a> · <a href="evolution/evolution_GSW.gif">gif</a></td></tr></table>
+
+<h2>Roster organisms</h2>
+<p class="note">The same rosters rendered as 3D bodies rather than graphs: each player is a
+metaball, the team is the isosurface of their combined occupancy of skill space. Lobes are role
+concentrations, a fat dense centre is redundancy, a detached satellite is a player nobody overlaps
+with. Trades are shown as true shape morphs. See <code>viz/blobs.html</code> and
+<code>BLOB_VIS_FINDINGS.md</code>.</p>
+<div class="chips"><a href="blobs.html">open the organism gallery</a></div>
+
+<h2>What each roster is missing</h2>
+<p class="note">League density minus team density on the two structural skill axes: warm is a role
+the roster is short of, cool is a surplus. Gaps are named after the league player who lives there.
+Read it as a diagnostic, not a quality metric: a bigger gap correlates with <em>more</em> wins
+(+0.20 over 776 team-seasons), because narrow specialised rosters are usually the good ones. See
+<code>BETTER_VIEWS.md</code>.</p>
+<div class="chips"><a href="deficit_gallery_2025-26.png">deficit gallery</a></div>
+
+<h2>Pair fit matrices</h2>
+<p class="note">One cell per pair, clustered so compatible groups form blocks. This is the view the
+blobs cannot produce, because a density field discards pair identity. Cells show the model fit;
+observed pair effects are annotated only where a pair has 3,000+ shared possessions, and the two
+correlate at just r = 0.09.</p>
+<div class="chips"><a href="pairgrid_gallery_2025-26.png">pair-fit gallery</a>
+<a href="pairgrid_model_vs_observed_2025-26.png">model vs observed</a></div>
+
+<h2>Counterfactual swaps</h2>
+<p class="note">Before and after a hypothetical roster change, including players who have never
+shared a floor with the roster: which team-mates gain and lose, where the newcomer lands in skill
+space, and how the structure metrics move.</p>
+<div class="chips"><a href="swaps/swap_DAL_Gafford_to_Turner.png">DAL Gafford to Turner</a><a href="swaps/swap_GSW_Horford_to_Jokic.png">GSW Horford to Jokic</a><a href="swaps/swap_MEM_Small_to_Gobert.png">MEM Small to Gobert</a><a href="swaps/swap_MIN_Gobert_to_Ball.png">MIN Gobert to Ball</a><a href="swaps/swap_OKC_Hartenstein_to_Green.png">OKC Hartenstein to Green</a></div>
+
+<h2>Real transactions</h2>
+<p class="note">Both panels are real seasons: departures ringed grey, arrivals ringed orange.</p>
+<div class="chips"><a href="swaps/trade_BOS_2022-23_to_2023-24.png">BOS 2022-23 to 2023-24</a><a href="swaps/trade_DAL_2024-25_to_2025-26.png">DAL 2024-25 to 2025-26</a><a href="swaps/trade_MIN_2021-22_to_2022-23.png">MIN 2021-22 to 2022-23</a><a href="swaps/trade_NYK_2023-24_to_2024-25.png">NYK 2023-24 to 2024-25</a><a href="swaps/trade_PHX_2022-23_to_2023-24.png">PHX 2022-23 to 2023-24</a></div>
+
+<h2>Why a pair fits, or does not</h2>
+<p class="note">Each panel decomposes one pair's predicted fit over the eigen-modes of the
+interaction matrix, shows both players' skill profiles, lists comparable pairs elsewhere in the
+league, and prints how many possessions the pair actually shared, with the uncertainty on the
+measured estimate.</p>
+<div class="chips"><a href="pairs/pair_best_Kalkbrenner_Williams.png">best Kalkbrenner Williams</a><a href="pairs/pair_best_Sims_Williams.png">best Sims Williams</a><a href="pairs/pair_best_Wembanyama_Kalkbrenner.png">best Wembanyama Kalkbrenner</a><a href="pairs/pair_best_Wembanyama_Sims.png">best Wembanyama Sims</a><a href="pairs/pair_highminutes_Murray_Jokić.png">highminutes Murray Jokić</a><a href="pairs/pair_worst_Ighodaro_Kalkbrenner.png">worst Ighodaro Kalkbrenner</a><a href="pairs/pair_worst_Kalkbrenner_Missi.png">worst Kalkbrenner Missi</a><a href="pairs/pair_worst_Kalkbrenner_Sims.png">worst Kalkbrenner Sims</a><a href="pairs/pair_worst_Sims_Missi.png">worst Sims Missi</a></div>
+
+<h2>Caveat worth keeping in view</h2>
+<p class="note">Complementarity is real but small: about 0.45 points per 100 possessions per pair,
+against 3.07 for individual player value, and roughly 17 points per 100 of noise in a single
+lineup's season. These pictures make fit look like the main story because fit is all they draw.
+It is not the main story; talent is.</p>
+</div></body></html>
